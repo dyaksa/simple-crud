@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const app = express();
 
 app.use(express.static("public"));
 
@@ -18,12 +19,9 @@ connection.connect((err) => {
   console.log("success");
 });
 
-const app = express();
-
 app.get("/", (req, res) => {
   connection.query("SELECT * FROM produk", (err, results) => {
-    console.log(results);
-    res.render("produk.ejs");
+    res.render("produk.ejs", { items: results });
   });
 });
 
