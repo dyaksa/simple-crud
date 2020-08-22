@@ -29,7 +29,7 @@
     </header>
     <main class="body-content">
       <div class="container">
-        <form action="/add" method="POST">
+        <form action="/update/<%= item.id %>" method="POST">
           <div class="form-group row">
             <label for="namaProduk" class="col-sm-2 col-form-label"
               >Nama Produk</label
@@ -40,6 +40,7 @@
                 class="form-control"
                 name="nama"
                 id="namaProduk"
+                value="<%= item.nama_produk %>"
               />
             </div>
           </div>
@@ -53,6 +54,7 @@
                 class="form-control"
                 name="keterangan"
                 id="keteranganProduk"
+                value="<%= item.keterangan %>"
               />
             </div>
           </div>
@@ -66,6 +68,7 @@
                 class="form-control"
                 name="harga"
                 id="hargaProduk"
+                value="<%= item.harga %>"
               />
             </div>
           </div>
@@ -79,6 +82,7 @@
                 class="form-control"
                 name="jumlah"
                 id="jumlahProduk"
+                value="<%= item.jumlah %>"
               />
             </div>
           </div>
