@@ -20,9 +20,26 @@ connection.connect((err) => {
 });
 
 app.get("/", (req, res) => {
+  let i = 1;
   connection.query("SELECT * FROM produk", (err, results) => {
-    res.render("produk.ejs", { items: results });
+    res.render("produk.ejs", { items: results, number: i });
   });
+});
+
+app.get("/add", (req, res) => {
+  res.render("tambah.ejs");
+});
+
+app.get("/delete/:id", (req, res) => {
+  connection.query(
+    "DELETE FROM produk WHERE id = ?",
+    [req.params.id],
+    (err, results) => {
+      if (!err) {
+        res.redirect("/");
+      }
+    }
+  );
 });
 
 app.listen(3000);
